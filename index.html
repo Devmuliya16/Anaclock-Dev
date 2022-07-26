@@ -1,446 +1,301 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes Maker Online</title>
-    <!-- link css -->
-    <link href="/javascript/notes website/notescss.css" rel="stylesheet">
-    <!-- link fontawsome -->
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <!-- font awsome -->
     <script src="https://kit.fontawesome.com/2687fb36d2.js" crossorigin="anonymous"></script>
+
+    <title>News By Dev</title>
+
+
     <style>
-      body{
-    min-width: 250px;
-    margin: 0px;
-    padding: 0px;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9oOAfndZy82zI4s_EUZeMW2VPZPhdQakUGQ&usqp=CAU");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-textarea{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-/* nevigation bar */
-#nav{
-    background-color: blueviolet;
-    color: white;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 20px;
-    position: sticky;
-    top: 0px;
-    box-shadow: 0px 2px 20px 2px black;
-    margin-bottom: 10px;
-    position:sticky;
-    top: -100px;
-}
-#nav i{
-    margin: 5px;
-}
-
-
-/* search area */
-#nav textarea{
-    resize: none;
-    border-radius: 5px;
-    height: 23px;
-    outline: none;
-    text-align: left;
-    padding-top: 7px;
-    font-size: 16px;
-    white-space: pre-wrap;
-}
-#search{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    margin-left: auto;
-    justify-content:baseline;
-}
-
-
-/* conatiner */
-#container{
-    margin: auto;
-    padding: 5px;
-    background-color:rgba(255, 255, 255, 0.50);
-    max-width: 800px;
-}
-
-
-
-
-/* subcontainer 1 */
-#subcontainer1{
-    padding: 5px;
-    background-color: rgb(167, 15, 255 ,0.60);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-#title{
-    resize: none;
-    font-size: 20px;
-}
-#text{
-    height: 90px;
-    resize: none;
-    font-size: 20px;
-}
-
-
-
-/* subcontiner 2*/
-#subcontainer2{
-    padding: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content:flex-start;
-}
-
-
-/* subcontainer 2 : elements */
-.elements{
-    border-radius: 5px;
-    width: fit-content;
-    margin: 5px;
-    padding: 5px;
-    background-color: rgb(140, 89, 206,0.60);
-    min-width: 100px;
-    transition: 0.4s;
-    display: flex;
-    flex-direction: column;
-}
-.elements:hover{
-    transform: scale(1.05);
-    animation: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transition: 0.4s;
-    background-color: rgb(109, 69, 161);
-    box-shadow: 0px 2px 1px 1px black;
-}
-.note-title{
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    padding: 0px;
-    margin: 0px;
-    white-space: pre-wrap;
-}
-.elements h4{
-    display: inline-block;
-    width: 100%;
-}
-.elements p{
-    background-color: white;
-    padding: 5px;
-    border-radius: 5px;
-    white-space: pre-wrap;
-    display: inline-block;
-    height: fit-content;
-    overflow-x: auto;
-}
-/* scroll bar */
-::-webkit-scrollbar{
-    height: 6px;
-    width: 6px;
-}
-::-webkit-scrollbar-track{
-    box-shadow: inset 0 0 5px grey;
-}
-::-webkit-scrollbar-thumb{
-    background: rgb(60, 38, 88);
-    border: 1px solid rgb(157, 128, 194);
-}
-/* searchcontainer */
-    #searchcontainer{
-        background-color: white;
-        border-radius: 10px;
-        z-index: 5;
-        min-width: 50%;
-        max-width: 95%;
-        padding: 20px;
-        height: 200px;
-        display: none;
-        overflow-y: auto;
-    }
-    #found{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    
-    button{
-        color: white;
-        background-color: rgb(77 75 165);
-        border: none;
-        margin: 2px;
-        padding: 4px;
-        border-radius: 5px;
-        font-size: 15px;
-        width: fit-content;
-    }
-    button:hover{
-        background-color: rgb(52, 52, 116);
-        transition: 1.05s;
-    }
-
-h2{
-    margin-top: 10px;
-    margin-bottom: 0px; 
-}
-button:active{
-    background-color: transparent;
-}
-  </style>
-
-</head>
-<body>
-
-
-    <!-- nevigaiton bar -->
-    <div id="nav">
-
-        <div>
-             <h2>
-                 <i class="fa-solid fa-pen-to-square"id="pen"></i>
-           Notes Maker Online</h2>
-        </div>
-
-        <div id="search">
-        <textarea id="searchcontent" placeholder="enter note content"></textarea>
-        <button onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
-        
-        <button onclick="reload()" id="reload">
-            <i class="fa-solid fa-arrow-rotate-right"></i>
-            Reload
-        </button>
-        </div>
-
-    </div>
-
-    <!-- search result -->
-    
-    <div id="searchcontainer">
-        <div id="found">
-
-        </div>
-        <button onclick="hide()">close</button>
-    </div>
-
-    <!-- container -->
-    <div id="container">
-
-        <!-- text container -->
-        <div id="subcontainer1">
-
-            <h2>title</h2>
-            <textarea id="title"></textarea>
-
-            <h2>Write your note here</h2>
-            <textarea id="text"></textarea>
-
-            <button id="create" style="width: fit-content;">
-             <i class="fa-solid fa-circle-plus"></i>
-             create</button>
-        </div>
- 
-        
-
-        <!-- notes container -->
-        <h2>your notes:</h2>
-        <div id="subcontainer2">
+      /*navigation bar  */
+        .navbar{
+          background-color:#9797ff;
+          position: sticky;
+          top: -50px;
+          z-index: 2;
+          box-shadow: 0px 2px 22px black;
+          min-width: 315px;
+        }
+        .navbar a{
+          font-size: 25px;
+          font-weight: bold;
+        }
+        #dropbtn{
+          float: left;
+        }
+        .navbar button{
+          color: white;
+          border-color: white;
+        }
+        .nav-left{
+         display: flex;
+         flex-wrap: wrap;
+        }
+        #news-container{
+            margin: auto;
+            width: 100%;
+            min-width: 314px;
+            display: flex;
+            align-items: stretch;
+            flex-wrap: wrap;
+            justify-content: center;
             
-           <!-- elements -->
+        }
+        .news_elements{
+            display: block;
+            width: 650px;
+            margin: 10px;
            
-        </div>
-        <button id="delete" onclick="clearnotes()">delete database</button>
-        
-     </div>
-
-
-</body>
-
-<!-- link javascript -->
-<script>
-// reload button
-function reload(){
-    location.reload();
-}
-
-let arr = [];
-arr = JSON.parse(localStorage.getItem('notes'));
-if(arr==null)
-arr=[];
-
-
-function object(title,note,id){
-    this.title=title;
-    this.note=note;
-    this.id=id;
-}
-function getid(){
-    return arr.length;
-}
-
-//onload
-function loadnotes(){
-    let n = arr.length;
-    for(i=0;i<n;i++){
-        if(arr[i]!=null){
-            create_element(arr[i]);
         }
-    }
-}
-loadnotes();
+        .news_elements a{
+           width: fit-content;
+           border-radius: 5px;
+           display: block;
+           padding: 5px;
+        }
+        .cradits{
+          background-color: black;
+          color: white;
+          box-shadow: 0px -2px 5px 0px black;
+          min-width: 314px;
+          position:static;
+        }
+    </style>
 
-//create element function
-function create_element(obj){
-    let newele = document.createElement('div');
-    newele.className='elements';
-    newele.id=obj.id;
-    newele.innerHTML=`
-    <b><h4 class="note-title">${obj.title}</h4></b>
-    <p>${obj.note}</p>
-    <button onclick="deletenote(${obj.id})">delete</button>
-    <button onclick="editnote(${obj.id})">edit</button>
-    `;
-
-    document.getElementById('subcontainer2').appendChild(newele);
-}
-
-//create button
-let create = document.getElementById('create');
-
-create.addEventListener('click',function(){
-
-
-    let notetitle = document.getElementById('title').value;
-    let notetext = document.getElementById('text').value;
-
-    if(notetitle!="" && notetext!=""){
-        let obj = new object(notetitle,notetext,getid());
-    
-        arr.push(obj);
-        create_element(obj);
-        localStorage.setItem('notes',JSON.stringify(arr));
-    }
-    else if(notetitle==''){
-        alert('please enter title');
-    }
-    else{
-        alert('please enter note');
-    }
-});
-
-
-function deletenote(id){
-    let elem = document.getElementById(id);
-    elem.remove();
-    arr[id]=null;
-    
-    localStorage.setItem('notes',JSON.stringify(arr));
-}
-
-
-
-//for search
-function search(){
-
-    let strcnt = document.getElementById('searchcontent').value;
-    if(strcnt==""){
-        return;
-    }
-    let searchtitle ='';
-    let searchcontent ='';
-    let count=0;
-    let container = document.getElementById('found');
-    
-    
-    
-    for(i=0;i<arr.length;i++){
-        if(arr[i]!=null)
-        {
-            searchtitle=arr[i].title;
-            searchcontent=arr[i].note;
+  </head>
+  <body>
+    <!-- the navigation bar -->
+    <nav class="navbar navbar-light justify-content-between">
+        <a>
+            <i class="fa-solid fa-newspaper"></i>
+            News by Dev
+          </a>
+          <div class="btn-group">
+      <div class="nav-left">     
+          <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="dropbtn">
+            <i class="fa-solid fa-earth-americas"></i>
+            Countries
+          </button>
+          <div class="dropdown-menu">
+                <a class="dropdown-item" onclick="india()"><img src="https://flagicons.lipis.dev/flags/4x3/in.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">India</a>
+                <a class="dropdown-item" onclick="russia()"><img src="https://flagicons.lipis.dev/flags/4x3/ru.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">Russia</a>
+                <a class="dropdown-item" onclick="china()"><img src="https://flagicons.lipis.dev/flags/4x3/cn.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">China</a>
+                <a class="dropdown-item" onclick="japan()"><img src="https://flagicons.lipis.dev/flags/4x3/jp.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">Japan</a>
+                <a class="dropdown-item" onclick="uk()"><img src="https://flagicons.lipis.dev/flags/4x3/gb.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">UK</a>
+                <a class="dropdown-item" onclick="canada()"><img src="https://flagicons.lipis.dev/flags/4x3/ca.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">Canada</a>
+                <a class="dropdown-item" onclick="us()"><img src="https://flagicons.lipis.dev/flags/4x3/um.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">US</a>
+                <a class="dropdown-item" onclick="australia()"><img src="https://flagicons.lipis.dev/flags/4x3/au.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">Australia</a>
+                <a class="dropdown-item" onclick="france()"><img src="https://flagicons.lipis.dev/flags/4x3/fr.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">France</a>
+                <a class="dropdown-item" onclick="germany()"><img src="https://flagicons.lipis.dev/flags/4x3/de.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">Germany</a>
+                <a class="dropdown-item" onclick="israel()"><img src="https://flagicons.lipis.dev/flags/4x3/il.svg" style="width: 30px; margin-bottom:5px;margin-right: 5px;">Israel</a>
+          </div>
             
-            if(searchtitle.includes(strcnt) || searchcontent.includes(strcnt))
-            {   
-                count++;
-                container.appendChild(document.getElementById(`${arr[i].id}`));
-            }
-        }
-    }
-    if(count>0){
-        let getsearch = document.getElementById('searchcontainer');
-        getsearch.style.display='block';
-        getsearch.append=`found ${count} in notes`;
-        count=0;
-    }
-    else{
-        let getsearch = document.getElementById('searchcontainer');
-        getsearch.style.display='block';
-        
-    }
+        <input id='search-news'class="form-control mr-sm-2" type="search" placeholder="Search topic" aria-label="Search" style="flex-shrink: 0; width: 200px;">
+        <button class="btn btn-outline-secondary" type="submit" onclick="searchthis()">
+          <i class="fa-solid fa-magnifying-glass"></i> Search
+        </button>
+      </div>
+      </nav>
+
+    <!-- about page -->
+    <h1 id="about-page">
+      <span class="badge badge-secondary">
+        <i class="fa-solid fa-arrow-trend-up"></i>  News in trend</span>
+      <span class="badge badge-secondary" id="count">India</span>
+    </h1>
+
+    <!-- news -->
+    <div id="news-container">
+
+     
+
+    </div>
+
+    <!-- cradits -->
+    <div class="cradits">
+      <h6>created by Dev <br> @2022</h6>
+    </div>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- local js -->
+    <script>
+        //my api to news api
+//d651625361834d45983c15309f86b986 mxforlogin
+//0728bb422eda4d8ebc9ddd52fcaee104 mygallary
+const api = '0728bb422eda4d8ebc9ddd52fcaee104';
+//alt https://cdn.pixabay.com/photo/2017/06/26/19/03/news-2444778_640.jpg
+let country='India';
+localStorage.setItem('country', 'in');
+call();
+function india() {
+  localStorage.setItem('country', 'in');
+  country = 'India';
+  call();
+}
+function russia() {
+  localStorage.setItem('country', 'ru');
+  country = 'Russia';
+  call();
+}
+function china() {
+  localStorage.setItem('country', 'cn');
+  country = 'China';
+  call();
+}
+function japan() {
+  localStorage.setItem('country', 'jp');
+  country = 'Japan';
+  call();
+}
+function uk() {
+  localStorage.setItem('country', 'gb');
+  country = 'U.K.';
+  call();
+}
+function us() {
+  country = 'U.S.';
+  localStorage.setItem('country', 'us');
+  call();
+}
+function israel() {
+  country = 'Israel';
+  localStorage.setItem('country', 'il');
+  call();
+}
+function france() {
+  country = 'France';
+  localStorage.setItem('country', 'fr');
+  call();
+}
+function germany() {
+  country = 'Germany';
+  localStorage.setItem('country', 'de');
+  call();
+}
+function australia() {
+  country = 'Australia';
+  localStorage.setItem('country', 'au');
+  call();
+}
+function canada() {
+  country = 'Canada';
+  localStorage.setItem('country', 'ca');
+  call();
 }
 
-function hide(){
-    document.getElementById('searchcontainer').style.display='none';
-    location.reload();
-    document.getElementById('found').innerHTML='';
-}
+//getting the data (here api file) which is hosted on server by XML request 
+//creating XHR object
+function call() {
+  document.getElementById('count').innerHTML=`${country}`;
 
+  let xhr = new XMLHttpRequest;
 
-let click=0;
-function editnote(id){
-    let elements = document.getElementById(`${id}`);
-    click++;
+  xhr.open('GET', `https://newsapi.org/v2/top-headlines?country=${localStorage.getItem('country')}&apiKey=${api}`, true);
 
-    if(click==1){
-        elements.children[0].children[0].setAttribute('contentEditable','true');
-        elements.children[1].setAttribute('contentEditable','true');
-        
-        elements.children[0].children[0].style.outline='none';
-        elements.children[1].style.outline='none';
-        
-        elements.children[3].innerHTML='save';
+  //when the request is completed
+  xhr.onload = function () {
+    if (this.status == 200) {
+      //here the this.responcetext will provide the string which is not usable because we want api
+      //so we will json.parse it
+      let news_array = JSON.parse(this.responseText);
+      let news = news_array.articles;
+      console.log(news);
+
+      //casting the news to the webpage
+      let container = document.getElementById('news-container');
+      container.innerHTML = '';
+      news.forEach((element) => {
+        let elem = document.createElement('div');
+        elem.className = 'news_elements';
+        elem.innerHTML = `
+                <div class="card">
+                <img class="card-img-top" src="${element.urlToImage}" alt="image did not found" onerror=this.src="https://cdn.pixabay.com/photo/2017/06/26/19/03/news-2444778_640.jpg">
+                <div class="card-body">
+                <h2 class="card-title">${element.title}</h2>
+                <p class="card-text">${element.content}</p>
+                <span class="badge badge-secondary">${element.publishedAt}</span>
+                <span class="badge badge-secondary">@${element.source.name}</span>
+                <a href="${element.url}" target="_blank" class="btn btn-primary">Read more</a>
+                  </div>
+                  </div>
+                  `;
+        container.appendChild(elem);
+      });
     }
-
-    if(click==2){
-        let editedtitle =  elements.children[0].children[0].innerHTML;
-        let editednote =  elements.children[1].innerHTML;
-        
-        elements.children[3].innerHTML='edit';
-
-        if(editednote!='' && editedtitle !=''){
-            arr[id].title=editedtitle;
-            arr[id].note=editednote;
-            localStorage.setItem('notes',JSON.stringify(arr));
-        }
-        else{
-            alert('please provide title and note both')
-        }
-        elements.children[0].children[0].setAttribute('contentEditable','false');
-        elements.children[1].setAttribute('contentEditable','false');
-        click=0;
-
-        console.log(elements);
-        
-    }
+  }
+  //sending the request
+  xhr.send();
 }
 
-function clearnotes(){
-    arr=[];
-    localStorage.clear();
-    location.reload();
-}
+
+//making new xml request for searchbar
+let searcharr;
+let searchcontent;
+
+function searchthis() {
+  console.log('clicked');
+  searchcontent = document.getElementById('search-news').value;
+  console.log(searchcontent);
   
-</script>
+  let xhr2 = new XMLHttpRequest;
+  xhr2.open('GET', `https://newsapi.org/v2/everything?q=${searchcontent}&apiKey=${api}`, true);
+  console.log(searchcontent);
+  
+  xhr2.onload = function () {
+    
+    if (this.status == 200 && searchcontent != '') {
+      console.log(searchcontent);
+      
+      searcharr = JSON.parse(this.responseText);
+      console.log(searcharr);
+      let container = document.getElementById('news-container');
+      container.innerHTML = '';
+
+
+      searcharr.articles.forEach((element) => {
+        console.log(element);
+        
+        let elem = document.createElement('div');
+        elem.className = 'news_elements';
+        elem.innerHTML = `
+              <div class="card">
+              <div class="card-body">
+                  <h2 class="card-title">${element.title}</h2>
+                  <p class="card-text">${element.content}</p>
+                  <span class="badge badge-secondary">${element.publishedAt}</span>
+                  <a href="${element.url}" class="btn btn-primary">Read more</a>
+                </div>
+                </div>
+              `;
+        container.appendChild(elem);
+      });
+
+      document.getElementById('about-page').innerHTML = `
+            <span class="badge badge-secondary">
+            <i class="fa-solid fa-magnifying-glass"></i> ${searchcontent}
+            </span>
+            <span class="badge badge-secondary">showing ${searcharr.articles.length} results</span>`;
+
+    }
+    else
+      console.log('error while loading');
+  }
+
+  xhr2.send();
+}
+
+    </script>
+  </body>
 </html>
