@@ -4,444 +4,292 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Notes Maker Online</title>
-    <!-- link css -->
-    <link href="/javascript/notes website/notescss.css" rel="stylesheet">
-    <!-- link fontawsome -->
-    <script src="https://kit.fontawesome.com/2687fb36d2.js" crossorigin="anonymous"></script>
+    <title>AnaClock - Dev</title>
     <style>
-      body{
-    min-width: 250px;
-    margin: 0px;
-    padding: 0px;
-    background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS9oOAfndZy82zI4s_EUZeMW2VPZPhdQakUGQ&usqp=CAU");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-}
-textarea{
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-}
-
-/* nevigation bar */
-#nav{
-    background-color: blueviolet;
-    color: white;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    padding: 6px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    font-size: 20px;
-    position: sticky;
-    top: 0px;
-    box-shadow: 0px 2px 20px 2px black;
-    margin-bottom: 10px;
-    position:sticky;
-    top: -56px;
-}
-#nav i{
-    margin: 5px;
-}
-
-
-/* search area */
-#nav textarea{
-    resize: none;
-    border-radius: 5px;
-    height: 23px;
-    outline: none;
-    text-align: left;
-    padding-top: 7px;
-    font-size: 16px;
-    white-space: pre-wrap;
-}
-#search{
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    position: relative;
-    margin-left: auto;
-    justify-content:baseline;
-}
-
-
-/* conatiner */
-#container{
-    margin: auto;
-    padding: 5px;
-    background-color:rgba(255, 255, 255, 0.50);
-    max-width: 800px;
-}
-
-
-
-
-/* subcontainer 1 */
-#subcontainer1{
-    padding: 5px;
-    background-color: rgb(167, 15, 255 ,0.60);
-    border-radius: 5px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-}
-
-#title{
-    resize: none;
-    font-size: 20px;
-}
-#text{
-    height: 90px;
-    resize: none;
-    font-size: 20px;
-}
-
-
-
-/* subcontiner 2*/
-#subcontainer2{
-    padding: 5px;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content:flex-start;
-}
-
-
-/* subcontainer 2 : elements */
-.elements{
-    border-radius: 5px;
-    width: fit-content;
-    margin: 5px;
-    padding: 5px;
-    background-color: rgb(140, 89, 206,0.60);
-    min-width: 100px;
-    transition: 0.4s;
-    display: flex;
-    flex-direction: column;
-}
-.elements:hover{
-    transform: scale(1.05);
-    animation: cubic-bezier(0.755, 0.05, 0.855, 0.06);
-    transition: 0.4s;
-    background-color: rgb(109, 69, 161);
-    box-shadow: 0px 2px 1px 1px black;
-}
-.note-title{
-    color: rgb(255, 255, 255);
-    font-size: 20px;
-    padding: 0px;
-    margin: 0px;
-    white-space: pre-wrap;
-}
-.elements h4{
-    display: inline-block;
-    width: 100%;
-}
-.elements p{
-    background-color: white;
-    padding: 5px;
-    border-radius: 5px;
-    white-space: pre-wrap;
-    display: inline-block;
-    height: fit-content;
-    overflow-x: auto;
-}
-/* scroll bar */
-::-webkit-scrollbar{
-    height: 6px;
-    width: 6px;
-}
-::-webkit-scrollbar-track{
-    box-shadow: inset 0 0 5px grey;
-}
-::-webkit-scrollbar-thumb{
-    background: rgb(60, 38, 88);
-    border: 1px solid rgb(157, 128, 194);
-}
-/* searchcontainer */
-    #searchcontainer{
-        background-color: white;
-        border-radius: 10px;
-        z-index: 5;
-        min-width: 50%;
-        max-width: 95%;
-        padding: 20px;
-        height: 200px;
-        display: none;
-        overflow-y: auto;
-    }
-    #found{
-        display: flex;
-        flex-wrap: wrap;
-    }
-    
-    button{
-        color: white;
-        background-color: rgb(77 75 165);
-        border: none;
-        margin: 2px;
-        padding: 4px;
-        border-radius: 5px;
-        font-size: 15px;
+        .container{
+        margin: auto;
+        display: block;
         width: fit-content;
-    }
-    button:hover{
-        background-color: rgb(52, 52, 116);
-        transition: 1.05s;
-    }
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-weight: 250;
+        text-shadow: 0 2px 2px black;
+        z-index: 1;
+            }
+        .dial{
+            border: 10px solid gray;
+            border-radius: 50%;
+            width: 500px;
+            height: 500px;
+            position: relative;
+            background-color: rgb(230, 230, 230);
+            box-shadow: inset 0px 0px 18px black, 0px 6px 12px black;
+            color: rgb(102, 102, 102);
+        }
+        span{
+            font-size: 35px;
+        }
+        .spoke{
+            position: absolute;
+            left: 50%;
+            height: 30px;
+            width: 2px;
+            margin-left: -50%;
+            background-color: gray;
+            margin-left: -1px;
+            z-index: 2;
+            transform-origin: 1px 252px;
+            box-shadow: 0 1px 3px black;
+        }
+        .spoke-container{
+            display: inline-block;
+            position: absolute;
+            top: 0%;
+            left: 50%;
+        }
+        .hourspoke{
+            height: 40px;
+            width: 5px;
+            margin-left: -2.5px;
+            transform-origin: 3px 252px
+        }
+        .h12{
+            position: absolute;
+            top: 34px;
+            left: 235px;;
+        }
+        .h3{
+            position: absolute;
+            top: 226px;
+            left: 438px;
+        }
+        .h6{
+            position: relative;
+            top: 418px;
+            left: 242px;
+        }
+        .h9{
+            position: absolute;
+            top: 228px;
+            left: 46px;
+        }
+        .arrows{
+            position: absolute;
+            top: 252px;
+            left: 258px;
+            width: fit-content;
+            margin-left: -8px;
+            transform: rotate(180deg);
+            z-index: 10;
+        }
+        .hr{
+            position:absolute;
+            width: 8px;
+            margin-left: -4px;
+            height: 164px;
+            background-color: rgb(202, 13, 13);
+            z-index: 5;
+            transform-origin: top;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 0 2px black;
+        }
+        .min{
+            position:absolute;
+            width: 5px;
+            margin-left: -2.5px;
+            height: 216px;
+            background-color: orange;
+            z-index: 5;
+            transform-origin: top;
+            border-top-left-radius: 20px;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 0 2px black;
+        }
+        .sec{
+            position:absolute;
+            width: 1px;
+            margin-left: -0.5px;
+            height: 221px;
+            background-color: yellow;
+            z-index: 5;
+            transform-origin: top;
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            box-shadow: 0 0 2px black;
 
-h2{
-    margin-top: 10px;
-    margin-bottom: 0px; 
-}
-button:active{
-    background-color: transparent;
-}
-  </style>
+        }
+        .dot{
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            margin-left: -10px;
+            z-index: 6;
+            border-radius: 50%;
+            background-color: gray;
+            top: -10px;
+            box-shadow: 0 -2px 5px black;
+        }
 
+        .daydate div{
+            position: absolute;
+            width: fit-content;
+            display: block;
+            background-color: rgb(190, 190, 190);
+            color: white;
+            border-radius: 20px;
+            padding: 10px;
+            font-size: 35px; 
+            box-shadow: inset 0 15px 22px rgb(65 65 65);
+            text-shadow: 0 0 2px white;
+        }
+        .daydate{
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            align-items: center;
+            background-color: black;
+            z-index: 1;   
+            position: relative;
+            top: 50px;
+        }
+        .day{
+            position: relative;
+            top: 250px;
+        }
+
+        .rough{
+            position: absolute;
+            display: block;
+            background-color: red;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            box-shadow: 0 0 20px red;
+            transition: 2s ease-in;
+        }
+        #r1{
+            background-color: yellow;
+            box-shadow: 5px 5px 200px yellow;
+        }
+        #r2{
+            background-color: orange;
+            box-shadow: 5px 5px 200px orange;
+        }
+        #r3{
+            background-color: red;
+            box-shadow: 5px 5px 200px red;
+        }
+
+        .super-container{
+            width: 800px;
+            height: 800px;
+            margin: auto;
+            overflow: hidden;
+            display:flex;
+            flex-direction:column;
+            flex-wrap:wrap;
+        }
+        body{
+            background-color: black;
+        }
+    </style>
 </head>
 <body>
-
-
-    <!-- nevigaiton bar -->
-    <div id="nav">
-
-        <div>
-             <h2>
-                 <i class="fa-solid fa-pen-to-square"id="pen"></i>
-           Notes Maker Online</h2>
+    <div class="super-container">
+        <div class="rough" id="r1"></div>
+        <div class="rough" id="r2"></div>
+        <div class="rough" id="r3"></div>
+        <div class="container">
+            <div class="dial">
+                <div>
+                    <span class="h12">12</span>
+                    <span class="h3">3</span>
+                    <span class="h6">6</span>
+                    <span class="h9">9</span>
+                </div>
+                <div class="spoke-container">
+                    
+                </div>
+                <div class="arrows">
+                    <div class="hr"></div>
+                    <div class="min"></div>
+                    <div class="sec"></div>
+                    <div class="dot"></div>
+                </div>
+                <div class="daydate">
+                    <div class="date">
+                        
+                    </div>
+                    <div class="day">
+                    
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <div id="search">
-        <textarea id="searchcontent" placeholder="enter note content"></textarea>
-        <button onclick="search()"><i class="fa-solid fa-magnifying-glass"></i></button>
-        
-        <button onclick="reload()" id="reload">
-            <i class="fa-solid fa-arrow-rotate-right"></i>
-            Reload
-        </button>
-        </div>
-
     </div>
-
-    <!-- search result -->
-    
-    <div id="searchcontainer">
-        <div id="found">
-
-        </div>
-        <button onclick="hide()">close</button>
-    </div>
-
-    <!-- container -->
-    <div id="container">
-
-        <!-- text container -->
-        <div id="subcontainer1">
-
-            <h2>title</h2>
-            <textarea id="title"></textarea>
-
-            <h2>Write your note here</h2>
-            <textarea id="text"></textarea>
-
-            <button id="create" style="width: fit-content;">
-             <i class="fa-solid fa-circle-plus"></i>
-             create</button>
-        </div>
- 
-        
-
-        <!-- notes container -->
-        <h2>your notes:</h2>
-        <div id="subcontainer2">
-            
-           <!-- elements -->
-           
-        </div>
-        <button id="delete" onclick="clearnotes()">delete database</button>
-        
-     </div>
-
-
 </body>
-
-<!-- link javascript -->
 <script>
-// reload button
-function reload(){
-    location.reload();
-}
-
-let arr = [];
-arr = JSON.parse(localStorage.getItem('notes'));
-if(arr==null)
-arr=[];
-
-
-function object(title,note,id){
-    this.title=title;
-    this.note=note;
-    this.id=id;
-}
-function getid(){
-    return arr.length;
-}
-
-//onload
-function loadnotes(){
-    let n = arr.length;
-    for(i=0;i<n;i++){
-        if(arr[i]!=null){
-            create_element(arr[i]);
-        }
+    console.log('hello');
+let clock = document.getElementsByClassName('spoke-container')[0];
+for(let i=0;i<60;i++){
+    let spoke = document.createElement('div');
+    spoke.className = 'spoke';
+    if(i%5==0){
+        spoke.classList.add('hourspoke');
     }
-}
-loadnotes();
 
-//create element function
-function create_element(obj){
-    let newele = document.createElement('div');
-    newele.className='elements';
-    newele.id=obj.id;
-    newele.innerHTML=`
-    <b><h4 class="note-title">${obj.title}</h4></b>
-    <p>${obj.note}</p>
-    <button onclick="deletenote(${obj.id})">delete</button>
-    <button onclick="editnote(${obj.id})">edit</button>
-    `;
+    let deg = i*6;
+    spoke.style.transform=`rotate(${deg}deg)`;
 
-    document.getElementById('subcontainer2').appendChild(newele);
+    clock.appendChild(spoke);
 }
 
-//create button
-let create = document.getElementById('create');
+let days = ["Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday"]
 
-create.addEventListener('click',function(){
+function watch(){
+    let now = new Date();
+    let h = now.getHours()%12;
+    let m = now.getMinutes();
+    let s = now.getSeconds();
+    let cald = now.getDate();
+    let calm = now.getMonth();
+    let caly = now.getFullYear();
 
+    let datecontainer = document.getElementsByClassName('date')[0];
+    datecontainer.innerHTML=`${cald}/${calm}/${caly}`;
+    let daycontainer = document.getElementsByClassName('day')[0];
+    daycontainer.innerHTML=`${days[now.getDay()]}`;
 
-    let notetitle = document.getElementById('title').value;
-    let notetext = document.getElementById('text').value;
+    let hdeg = (h + (m)/60 + (s)/3600)*30;
+    let mdeg = (m+ (s)/60)*6;
+    let sdeg = s*6;
 
-    if(notetitle!="" && notetext!=""){
-        let obj = new object(notetitle,notetext,getid());
+    let hourspoke = document.getElementsByClassName('hr')[0];
+    let minutespoke = document.getElementsByClassName('min')[0];
+    let secondspoke = document.getElementsByClassName('sec')[0];
     
-        arr.push(obj);
-        create_element(obj);
-        localStorage.setItem('notes',JSON.stringify(arr));
-    }
-    else if(notetitle==''){
-        alert('please enter title');
-    }
-    else{
-        alert('please enter note');
-    }
-});
+    hourspoke.style.transform=`rotate(${hdeg}deg)`;
+    minutespoke.style.transform=`rotate(${mdeg}deg)`;
+    secondspoke.style.transform=`rotate(${sdeg}deg)`;
 
-
-function deletenote(id){
-    let elem = document.getElementById(id);
-    elem.remove();
-    arr[id]=null;
     
-    localStorage.setItem('notes',JSON.stringify(arr));
+    let elem1 = document.getElementById('r1');
+    elem1.style.top=`${sdeg}px`;
+    elem1.style.width=`${sdeg}px`;
+    elem1.style.height=`${sdeg}px`;
+
+    let elem2 = document.getElementById('r2');
+    elem2.style.bottom=`${mdeg}px`;
+    elem2.style.width=`${mdeg}px`;
+    elem2.style.height=`${mdeg}px`;
+
+    let elem3 = document.getElementById('r3');
+    elem3.style.right=`${hdeg}px`;
+    elem3.style.width=`${hdeg}px`;
+    elem3.style.height=`${hdeg}px`;
+
 }
-
-
-
-//for search
-function search(){
-
-    let strcnt = document.getElementById('searchcontent').value;
-    if(strcnt==""){
-        return;
-    }
-    let searchtitle ='';
-    let searchcontent ='';
-    let count=0;
-    let container = document.getElementById('found');
-    
-    
-    
-    for(i=0;i<arr.length;i++){
-        if(arr[i]!=null)
-        {
-            searchtitle=arr[i].title;
-            searchcontent=arr[i].note;
-            
-            if(searchtitle.includes(strcnt) || searchcontent.includes(strcnt))
-            {   
-                count++;
-                container.appendChild(document.getElementById(`${arr[i].id}`));
-            }
-        }
-    }
-    if(count>0){
-        let getsearch = document.getElementById('searchcontainer');
-        getsearch.style.display='block';
-        getsearch.append=`found ${count} in notes`;
-        count=0;
-    }
-    else{
-        let getsearch = document.getElementById('searchcontainer');
-        getsearch.style.display='block';
-        
-    }
-}
-
-function hide(){
-    document.getElementById('searchcontainer').style.display='none';
-    location.reload();
-    document.getElementById('found').innerHTML='';
-}
-
-
-let click=0;
-function editnote(id){
-    let elements = document.getElementById(`${id}`);
-    click++;
-
-    if(click==1){
-        elements.children[0].children[0].setAttribute('contentEditable','true');
-        elements.children[1].setAttribute('contentEditable','true');
-        
-        elements.children[0].children[0].style.outline='none';
-        elements.children[1].style.outline='none';
-        
-        elements.children[3].innerHTML='save';
-    }
-
-    if(click==2){
-        let editedtitle =  elements.children[0].children[0].innerHTML;
-        let editednote =  elements.children[1].innerHTML;
-        
-        elements.children[3].innerHTML='edit';
-
-        if(editednote!='' && editedtitle !=''){
-            arr[id].title=editedtitle;
-            arr[id].note=editednote;
-            localStorage.setItem('notes',JSON.stringify(arr));
-        }
-        else{
-            alert('please provide title and note both')
-        }
-        elements.children[0].children[0].setAttribute('contentEditable','false');
-        elements.children[1].setAttribute('contentEditable','false');
-        click=0;
-
-        console.log(elements);
-        
-    }
-}
-
-function clearnotes(){
-    arr=[];
-    localStorage.clear();
-    location.reload();
-}
-  
+setInterval(watch,1000);
 </script>
 </html>
-
