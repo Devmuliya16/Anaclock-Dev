@@ -7,199 +7,243 @@
     <title>AnaClock - Dev</title>
     <style>
         .container{
-        margin: auto;
-        display: block;
-        width: fit-content;
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        font-weight: 250;
-        text-shadow: 0 2px 2px black;
-        z-index: 1;
-            }
-        .dial{
-            border: 10px solid gray;
-            border-radius: 50%;
-            width: 500px;
-            height: 500px;
-            position: relative;
-            background-color: rgb(230, 230, 230);
-            box-shadow: inset 0px 0px 18px black, 0px 6px 12px black;
-            color: rgb(102, 102, 102);
-        }
-        span{
-            font-size: 35px;
-        }
-        .spoke{
-            position: absolute;
-            left: 50%;
-            height: 30px;
-            width: 2px;
-            margin-left: -50%;
-            background-color: gray;
-            margin-left: -1px;
-            z-index: 2;
-            transform-origin: 1px 252px;
-            box-shadow: 0 1px 3px black;
-        }
-        .spoke-container{
-            display: inline-block;
-            position: absolute;
-            top: 0%;
-            left: 50%;
-        }
-        .hourspoke{
-            height: 40px;
-            width: 5px;
-            margin-left: -2.5px;
-            transform-origin: 3px 252px
-        }
-        .h12{
-            position: absolute;
-            top: 34px;
-            left: 235px;;
-        }
-        .h3{
-            position: absolute;
-            top: 226px;
-            left: 438px;
-        }
-        .h6{
-            position: relative;
-            top: 418px;
-            left: 242px;
-        }
-        .h9{
-            position: absolute;
-            top: 228px;
-            left: 46px;
-        }
-        .arrows{
-            position: absolute;
-            top: 252px;
-            left: 258px;
-            width: fit-content;
-            margin-left: -8px;
-            transform: rotate(180deg);
-            z-index: 10;
-        }
-        .hr{
-            position:absolute;
-            width: 8px;
-            margin-left: -4px;
-            height: 164px;
-            background-color: rgb(202, 13, 13);
-            z-index: 5;
-            transform-origin: top;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 0 2px black;
-        }
-        .min{
-            position:absolute;
-            width: 5px;
-            margin-left: -2.5px;
-            height: 216px;
-            background-color: orange;
-            z-index: 5;
-            transform-origin: top;
-            border-top-left-radius: 20px;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 0 2px black;
-        }
-        .sec{
-            position:absolute;
-            width: 1px;
-            margin-left: -0.5px;
-            height: 221px;
-            background-color: yellow;
-            z-index: 5;
-            transform-origin: top;
-            border-bottom-left-radius: 20px;
-            border-bottom-right-radius: 20px;
-            box-shadow: 0 0 2px black;
+    margin: auto;
+    width: fit-content;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 250;
+    text-shadow: 0 2px 2px black;
+    z-index: 1;
+}
+.dial{
+    border: 10px solid gray;
+    border-radius: 50%;
+    width: 500px;
+    height: 500px;
+    position: relative;
+    background-color: rgb(230, 230, 230);
+    box-shadow: inset 0px 0px 18px black, 0px 6px 12px black;
+    color: rgb(102, 102, 102);
+}
+span{
+    font-size: 35px;
+}
+.spoke{
+    position: absolute;
+    left: 50%;
+    height: 30px;
+    width: 2px;
+    margin-left: -50%;
+    background-color: gray;
+    margin-left: -1px;
+    z-index: 2;
+    transform-origin: 1px 252px;
+    box-shadow: 0 1px 3px black;
+}
+.spoke-container{
+    display: inline-block;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+}
+.hourspoke{
+    height: 40px;
+    width: 5px;
+    margin-left: -2.5px;
+    transform-origin: 3px 252px
+}
+.h12{
+    position: absolute;
+    top: 34px;
+    left: 235px;;
+}
+.h3{
+    position: absolute;
+    top: 226px;
+    left: 438px;
+}
+.h6{
+    position: relative;
+    top: 418px;
+    left: 242px;
+}
+.h9{
+    position: absolute;
+    top: 228px;
+    left: 46px;
+}
+.arrows{
+    position: absolute;
+    top: 252px;
+    left: 258px;
+    width: fit-content;
+    margin-left: -8px;
+    transform: rotate(180deg);
+    z-index: 10;
+}
+.hr{
+    position:absolute;
+    width: 8px;
+    margin-left: -4px;
+    height: 164px;
+    background-color: rgb(202, 13, 13);
+    z-index: 5;
+    transform-origin: top;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 0 2px black;
+}
+.min{
+    position:absolute;
+    width: 5px;
+    margin-left: -2.5px;
+    height: 216px;
+    background-color: orange;
+    z-index: 5;
+    transform-origin: top;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 0 2px black;
+}
+.sec{
+    position:absolute;
+    width: 1px;
+    margin-left: -0.5px;
+    height: 221px;
+    background-color: yellow;
+    z-index: 5;
+    transform-origin: top;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    box-shadow: 0 0 2px black;
 
-        }
-        .dot{
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            margin-left: -10px;
-            z-index: 6;
-            border-radius: 50%;
-            background-color: gray;
-            top: -10px;
-            box-shadow: 0 -2px 5px black;
-        }
+}
+.dot{
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    margin-left: -10px;
+    z-index: 6;
+    border-radius: 50%;
+    background-color: gray;
+    top: -10px;
+    box-shadow: 0 -2px 5px black;
+}
 
-        .daydate div{
-            position: absolute;
-            width: fit-content;
-            display: block;
-            background-color: rgb(190, 190, 190);
-            color: white;
-            border-radius: 20px;
-            padding: 10px;
-            font-size: 35px; 
-            box-shadow: inset 0 15px 22px rgb(65 65 65);
-            text-shadow: 0 0 2px white;
-        }
-        .daydate{
-            display: flex;
-            flex-direction: column;
-            flex-wrap: nowrap;
-            align-items: center;
-            background-color: black;
-            z-index: 1;   
-            position: relative;
-            top: 50px;
-        }
-        .day{
-            position: relative;
-            top: 250px;
-        }
+.daydate div{
+    position: absolute;
+    width: fit-content;
+    display: block;
+    background-color: rgb(190, 190, 190);
+    color: white;
+    border-radius: 20px;
+    padding: 10px;
+    font-size: 35px; 
+    box-shadow: inset 0 15px 22px rgb(65 65 65);
+    text-shadow: 0 0 2px white;
+}
+.daydate{
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-items: center;
+    background-color: black;
+    z-index: 1;   
+    position: relative;
+    top: 50px;
+}
+.day{
+    position: relative;
+    top: 250px;
+}
 
-        .rough{
-            position: absolute;
-            display: block;
-            background-color: red;
-            border-radius: 50%;
-            width: 50px;
-            height: 50px;
-            box-shadow: 0 0 20px red;
-            transition: 2s ease-in;
-        }
-        #r1{
-            background-color: yellow;
-            box-shadow: 5px 5px 200px yellow;
-        }
-        #r2{
-            background-color: orange;
-            box-shadow: 5px 5px 200px orange;
-        }
-        #r3{
-            background-color: red;
-            box-shadow: 5px 5px 200px red;
-        }
 
-        .super-container{
-            width: 800px;
-            height: 800px;
-            margin: auto;
-            overflow: hidden;
-            display:flex;
-            flex-direction:column;
-            flex-wrap:wrap;
-        }
-        body{
-            background-color: black;
-        }
+.c1 , .c2 , .c3{
+    position: absolute;
+    display: inline-block;
+    border-radius: 50%;
+    animation: infinite;
+}
+.c1{
+    width: 500px;
+    height: 500px;
+    box-shadow: 0 0 5em rgb(216, 216, 216);
+    background-color: rgb(216, 216, 216);
+    animation-name: animate1;
+    animation-duration: 2s;
+}
+.c2{
+    width: 100px;
+    height: 100px;
+    background-color: rgb(167, 167, 167);
+    box-shadow: 0 0 5em rgb(167, 167, 167);
+    animation-name: animate2 ;
+    animation-duration:2s ;
+  
+}
+.c3{
+    width: 50px;
+    height: 50px;
+    background-color: rgb(110, 110, 110);
+    box-shadow: 0 0 5em rgb(110, 110, 110);
+    animation:infinite;
+    animation-name: animation3;
+    animation-duration: 2s;
+}
+.super-container{
+    margin: auto;
+    width:800px;
+    height: 800px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+@keyframes animate1{
+    0%{
+        height: 400px;
+        width: 400px;
+    }
+    100%{
+        height: 800px;
+        width:800px;
+        background-color: transparent;
+        box-shadow: none;   
+    }
+}
+@keyframes animate2{
+    0%{
+        height: 400px;
+        width: 400px;
+    }
+    100%{
+        height: 700px;
+        width:700px;
+        background-color: transparent;
+        box-shadow: none;   
+    }
+}
+@keyframes animate3{
+    0%{
+        height: 400px;
+        width: 400px;
+    }
+    100%{
+        height: 650px;
+        width: 650px;
+        background-color: transparent;
+        box-shadow: none;   
+    }
+}
+body{
+    background-color: black;
+}
     </style>
 </head>
 <body>
     <div class="super-container">
-        <div class="rough" id="r1"></div>
-        <div class="rough" id="r2"></div>
-        <div class="rough" id="r3"></div>
+        <div class="c1"></div>
+        <div class="c2"></div>
+        <div class="c3"></div>
         <div class="container">
             <div class="dial">
                 <div>
@@ -230,7 +274,7 @@
     </div>
 </body>
 <script>
-    console.log('hello');
+   console.log('hello');
 let clock = document.getElementsByClassName('spoke-container')[0];
 for(let i=0;i<60;i++){
     let spoke = document.createElement('div');
@@ -241,11 +285,20 @@ for(let i=0;i<60;i++){
 
     let deg = i*6;
     spoke.style.transform=`rotate(${deg}deg)`;
-
+    
     clock.appendChild(spoke);
 }
 
+let datecontainer = document.getElementsByClassName('date')[0];
+let daycontainer = document.getElementsByClassName('day')[0];
+let c1 = document.getElementsByClassName('c1')[0];
+let c2 = document.getElementsByClassName('c2')[0];
+let c3 = document.getElementsByClassName('c3')[0];
+let hourspoke = document.getElementsByClassName('hr')[0];
+let minutespoke = document.getElementsByClassName('min')[0];
+let secondspoke = document.getElementsByClassName('sec')[0];
 let days = ["Sunday","Monday","Tuesday","Wednesday","Thrusday","Friday","Saturday"]
+
 
 function watch(){
     let now = new Date();
@@ -253,43 +306,24 @@ function watch(){
     let m = now.getMinutes();
     let s = now.getSeconds();
     let cald = now.getDate();
-    let calm = now.getMonth();
+    let calm = now.getMonth()+1;
     let caly = now.getFullYear();
 
-    let datecontainer = document.getElementsByClassName('date')[0];
     datecontainer.innerHTML=`${cald}/${calm}/${caly}`;
-    let daycontainer = document.getElementsByClassName('day')[0];
     daycontainer.innerHTML=`${days[now.getDay()]}`;
 
     let hdeg = (h + (m)/60 + (s)/3600)*30;
     let mdeg = (m+ (s)/60)*6;
     let sdeg = s*6;
 
-    let hourspoke = document.getElementsByClassName('hr')[0];
-    let minutespoke = document.getElementsByClassName('min')[0];
-    let secondspoke = document.getElementsByClassName('sec')[0];
-    
     hourspoke.style.transform=`rotate(${hdeg}deg)`;
     minutespoke.style.transform=`rotate(${mdeg}deg)`;
     secondspoke.style.transform=`rotate(${sdeg}deg)`;
 
     
-    let elem1 = document.getElementById('r1');
-    elem1.style.top=`${sdeg}px`;
-    elem1.style.width=`${sdeg}px`;
-    elem1.style.height=`${sdeg}px`;
-
-    let elem2 = document.getElementById('r2');
-    elem2.style.bottom=`${mdeg}px`;
-    elem2.style.width=`${mdeg}px`;
-    elem2.style.height=`${mdeg}px`;
-
-    let elem3 = document.getElementById('r3');
-    elem3.style.right=`${hdeg}px`;
-    elem3.style.width=`${hdeg}px`;
-    elem3.style.height=`${hdeg}px`;
-
+    
 }
 setInterval(watch,1000);
+
 </script>
 </html>
